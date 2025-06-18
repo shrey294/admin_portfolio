@@ -1,0 +1,71 @@
+<div class="edit-section">
+  <h4 class="section-title">Skills Section</h4>
+
+  <div class="mb-4">
+    <label class="form-label">Skills</label>
+
+    <!-- Message when no skills -->
+    <div *ngIf="skills.length === 0" class="text-muted mb-3">
+      No skills found. Click "Add Skill" to add one.
+    </div>
+
+    <!-- Skills Loop -->
+    <div *ngFor="let skill of skills" class="skill-item">
+      <div class="skill-header d-flex justify-content-between align-items-center mb-2">
+        <ng-container *ngIf="skill.isEditable; else viewMode">
+          <input
+            type="text"
+            class="form-control skill-name-input"
+            [(ngModel)]="skill.name"
+            placeholder="Skill Name"
+            (blur)="disableEdit(skill)"
+          />
+        </ng-container>
+        <ng-template #viewMode>
+          <span class="skill-name fw-bold">{{ skill.name }}</span>
+        </ng-template>
+
+        <button class="remove-skill btn btn-sm btn-outline-danger ms-2" (click)="enableEdit(skill)" *ngIf="!skill.isEditable">
+          <i class="fas fa-pen"></i>
+        </button>
+      </div>
+
+      <!-- Progress Bar -->
+      <div class="progress mb-2">
+        <div
+          class="progress-bar"
+          role="progressbar"
+          [style.width.%]="skill.value"
+          [attr.aria-valuenow]="skill.value"
+          aria-valuemin="0"
+          aria-valuemax="100"
+        ></div>
+      </div>
+
+      <!-- Range Input -->
+      <div class="input-group mb-3">
+        <input
+  type="range"
+  class="form-range"
+  min="0"
+  max="100"
+  [(ngModel)]="skill.value"
+  [disabled]="!skill.isEditable"
+  (input)="updateSkillValue(skill, $event)"
+/>
+
+        <span class="ms-2">{{ skill.value }}%</span>
+      </div>
+    </div>
+
+    <!-- Add Skill Button -->
+    <button class="add-skill-btn btn btn-outline-secondary mt-2" (click)="addSkill()">
+      <i class="fas fa-plus me-2"></i>Add Skill
+    </button>
+  </div>
+
+  <!-- Save Button -->
+  <div class="text-end">
+    <button class="btn btn-primary save-btn" (click)="saveSkills()">Save</button>
+  </div>
+</div>

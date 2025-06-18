@@ -1,0 +1,39 @@
+<!-- <h2>Login</h2>
+<form (ngSubmit)="onLogin()">
+  <label>
+    Username:
+    <input type="text" [(ngModel)]="userName" name="userName" required>
+  </label>
+  <br>
+  <label>
+    Password:
+    <input type="password" [(ngModel)]="password" name="password" required>
+  </label>
+  <br>
+  <button type="submit">Login</button>
+  <div *ngIf="errorMessage" style="color:red;">{{ errorMessage }}</div>
+</form> -->
+
+<div class="login-wrapper">
+  <div class="login-container">
+    <h2>Login</h2>
+    <form (ngSubmit)="onLogin()">
+      <div class="form-group mb-2">
+        <label for="username">Username</label>
+        <input type="text" class="form-control" name="UserName" [(ngModel)]="userName" placeholder="Enter Username"
+          required>
+      </div>
+      <div class="form-group mb-2">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" name="Password" [(ngModel)]="password" placeholder="Enter Password"
+          required>
+      </div>
+      <button type="submit" class="btn-login" [disabled]="loading">
+        <span *ngIf="loading" class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+        {{ loading ? 'Logging in...' : 'Login' }}
+      </button>
+
+      <div *ngIf="errorMessage" style="color:red;">{{ errorMessage }}</div>
+    </form>
+  </div>
+</div>

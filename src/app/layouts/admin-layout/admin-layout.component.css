@@ -1,0 +1,127 @@
+:root {
+    --sidebar-width: 250px;
+    --sidebar-collapsed-width: 80px;
+    --transition-time: 0.3s;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #fafafa;
+}
+
+.wrapper {
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+}
+
+#sidebar {
+    min-width: var(--sidebar-width);
+    max-width: var(--sidebar-width);
+    background: #7386D5;
+    color: #fff;
+    transition: 0.3s;
+    min-height: 100vh;
+    width: 300px;
+}
+
+#sidebar.active {
+    /* margin-left: calc(var(--sidebar-collapsed-width) - var(--sidebar-width)); */
+    width: 80px;
+}
+
+#sidebar .sidebar-header {
+    padding: 20px;
+    background: #6d7fcc;
+    text-align: center;
+}
+
+#sidebar ul.components {
+    padding: 20px 0;
+}
+
+#sidebar ul li a {
+    padding: 15px 20px;
+    font-size: 1.1em;
+    display: block;
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+#sidebar ul li a:hover {
+    color: #7386D5;
+    background: #fff;
+}
+
+#sidebar ul li a i {
+    margin-right: 10px;
+}
+
+#sidebar ul li.active > a {
+    color: #fff;
+    background: #6d7fcc;
+}
+
+#sidebar ul li a span {
+    transition: all var(--transition-time);
+}
+
+#sidebar.active ul li a span {
+    display: none;
+}
+
+#sidebar.active .sidebar-header h3 {
+    display: none;
+}
+
+#sidebar.active .sidebar-header strong {
+    display: block;
+    font-size: 1.8em;
+}
+
+#sidebar .sidebar-header strong {
+    display: none;
+    font-size: 1.8em;
+}
+
+#content {
+    width: 100%;
+    min-height: 100vh;
+    transition: all var(--transition-time);
+}
+
+.navbar {
+    padding: 15px 10px;
+    background: #fff;
+    border: none;
+    border-radius: 0;
+    margin-bottom: 40px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-btn {
+    box-shadow: none;
+    outline: none !important;
+    border: none;
+}
+
+/* Adjustments for smaller screens */
+@media (max-width: 768px) {
+    #sidebar {
+        margin-left: calc(var(--sidebar-collapsed-width) - var(--sidebar-width));
+    }
+    #sidebar.active {
+        margin-left: 0;
+    }
+    #sidebarCollapse span {
+        display: none;
+    }
+    #sidebarCollapse {
+    margin-left: 0;
+    transition: margin-left var(--transition-time);
+}
+#sidebar.active ~ #content .navbar #sidebarCollapse {
+    margin-left: calc(var(--sidebar-collapsed-width) - var(--sidebar-width));
+}
+}

@@ -1,0 +1,102 @@
+<div class="container-fluid">
+  <main class="main-content">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+      <h1 class="h2">Skills Management</h1>
+    </div>
+
+    <div class="skill-form-container" id="skillFormContainer">
+      <h5>Add New Skill</h5>
+      <form [formGroup]="skillForm" (ngSubmit)="onSubmit()">
+        <div class="row mb-3">
+          <label class="form-label">Category</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="title"
+            placeholder="Category"
+            [class.is-invalid]="skillForm.controls.title.invalid && (skillForm.controls.title.touched || submitted)"
+          />
+          <div *ngIf="skillForm.controls.title.invalid && (skillForm.controls.title.touched || submitted)" class="invalid-feedback">
+            Category is required.
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Related Skills</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="pillText"
+            placeholder="Add related skill"
+            [class.is-invalid]="skillForm.controls.pillText.invalid && (skillForm.controls.pillText.touched || submitted)"
+          />
+          <div *ngIf="skillForm.controls.pillText.invalid && (skillForm.controls.pillText.touched || submitted)" class="invalid-feedback">
+            Related skills are required.
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="skillIcon" class="form-label">Skill Icon (Flaticon URL)</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="imageUrl"
+            placeholder="Icon"
+            [class.is-invalid]="skillForm.controls.imageUrl.invalid && (skillForm.controls.imageUrl.touched || submitted)"
+          />
+          <div *ngIf="skillForm.controls.imageUrl.invalid && (skillForm.controls.imageUrl.touched || submitted)" class="invalid-feedback">
+            Icon URL is required.
+          </div>
+        </div>
+
+        <div class="d-flex justify-content-end">
+          <button type="button" class="btn btn-secondary me-2" (click)="onReset()">Clear</button>
+          <button type="submit" class="btn btn-success">Save Skill</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="card mt-4">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <h5 class="mb-0">All Skills</h5>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th width="5%">SR.No</th>
+                <th width="15%">Category</th>
+                <th width="30%">Related Skills</th>
+                <th width="10%">Icon</th>
+                <th width="20%">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let skill of skillsList; let i = index">
+                <td>{{ i + 1 }}</td>
+                <td><span class="badge-category">{{ skill.title }}</span></td>
+                <td>
+                  <ng-container *ngFor="let subskill of getsubskills(skill.pillText)">
+                    <span class="skill-chip">{{ subskill }}</span>
+                  </ng-container>
+                </td>
+                <td class="align-items-center">
+                  <img [src]="skill.imageurl" alt="icon" width="20" height="20" class="me-2" />
+                </td>
+                <td class="action-btns">
+                  <button class="btn btn-sm btn-outline-primary me-2" (click)="filldata(skill)">
+                    <i class="fas fa-edit"></i>
+                  </button>
+                  <button class="btn btn-sm btn-outline-danger" (click)="deleteskill(skill.id)">
+                    <i class="fas fa-trash"></i>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

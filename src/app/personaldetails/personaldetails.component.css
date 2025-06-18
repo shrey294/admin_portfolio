@@ -1,0 +1,48 @@
+ body {
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+        .edit-section {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(19, 4, 4, 0.1);
+            padding: 30px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .section-title {
+            font-weight: 600;
+            margin-bottom: 25px;
+            color: #333;
+        }
+        .form-label {
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: #555;
+        }
+        .form-control, .form-select {
+            border-radius: 8px;
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+        }
+        textarea.form-control {
+            min-height: 120px;
+        }
+        
+        .save-btn {
+            background-color: #0d6efd;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 8px;
+            font-weight: 500;
+            margin-top: 20px;
+        }
+        .save-btn:hover {
+            background-color: #0b5ed7;
+        }
+        .img-thumbnail {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+  background-color: #f8f9fa;
+}

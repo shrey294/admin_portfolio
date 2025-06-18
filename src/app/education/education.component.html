@@ -1,0 +1,69 @@
+<div class="container">
+  <h1 class="display-6 fw-bold mb-4 text-center text-primary">Experience</h1>
+  <div class="card p-4 mb-4 boxshadowcustom"> 
+    <h2 class="h4 fw-semibold mb-4">Add New Education</h2>
+    
+    <form [formGroup]="educationForm" (ngSubmit)="addEducation()">
+      <div class="row g-3">
+        <div class="col-md-6">
+          <input type="text" formControlName="qualification" placeholder="Qualification" class="form-control" />
+          <div *ngIf="educationForm.get('qualification')?.invalid && educationForm.get('qualification')?.touched" class="text-danger">
+            <small *ngIf="educationForm.get('qualification')?.errors?.['required']">qualification is required</small>
+            
+          </div>
+        </div>
+        <div class="col-md-6">
+          <input type="text" formControlName="collegeName" placeholder="College Name" class="form-control" />
+          <div *ngIf="educationForm.get('collegeName')?.invalid && educationForm.get('collegeName')?.touched" class="text-danger">
+            <small *ngIf="educationForm.get('collegeName')?.errors?.['required']">College Name is required</small>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <input type="text" formControlName="duration" placeholder="Duration (e.g., 2020 - Present)" class="form-control" />
+          <div *ngIf="educationForm.get('duration')?.invalid && educationForm.get('duration')?.touched" class="text-danger">
+            <small *ngIf="educationForm.get('duration')?.errors?.['required']">Duration is required</small>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <input type="text" formControlName="description" placeholder="Description" class="form-control" />
+          <div *ngIf="educationForm.get('description')?.invalid && educationForm.get('description')?.touched" class="text-danger">
+            <small *ngIf="educationForm.get('description')?.errors?.['required']">Description is required</small>
+          </div>
+        </div>
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary mt-2 px-4 py-2">
+            <i class="bi bi-plus-circle me-2"></i>Add Education
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+  
+  <div class="card p-4 boxshadowcustom">
+    <h2 class="h4 fw-semibold mb-4">Existing Education</h2>
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Qualification</th>
+            <th>Institute Name</th>
+            <th>Duration</th>
+            <th>Description</th>
+            <th class="text-end">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="education-table-body">
+          <tr *ngFor="let exp of education">
+            <td class="fw-semibold">{{exp.qualification}}</td>
+            <td>{{exp.collegeName.trim()}}</td>
+            <td>{{exp.duration.trim()}}</td>
+            <td class="description-cell" [title]="exp.description">{{exp.description}}</td>
+            <td class="text-end action-buttons">
+              <button class="btn btn-action btn-edit me-1" (click)="editeducation(exp)"><i class="fas fa-edit"></i></button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

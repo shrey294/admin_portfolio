@@ -1,0 +1,55 @@
+<div class="edit-section">
+    <h4 class="section-title">Who Am I? Section</h4>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="mb-4">
+            <label for="description" class="form-label">Description</label>
+            <textarea class="form-control" formControlName="Description" placeholder="Description"></textarea>
+            <small *ngIf="form.get('Description')?.touched && form.get('Description')?.invalid" class="text-danger">
+                <ng-container *ngIf="form.get('Description')?.errors?.['required']">
+                    Description is required.
+                </ng-container>
+                <ng-container *ngIf="form.get('Description')?.errors?.['minlength']">
+                    Minimum 10 characters required.
+                </ng-container>
+            </small>
+        </div>
+
+        <div class="mb-4">
+            <label for="yearsExperience" class="form-label">Years of Experience</label>
+            <input type="number" class="form-control" formControlName="Experience" step="0.1" min="0">
+            <small *ngIf="form.get('Experience')?.touched && form.get('Experience')?.invalid" class="text-danger">
+                <ng-container *ngIf="form.get('Experience')?.errors?.['required']">
+                    Experience is required.
+                </ng-container>
+                <ng-container *ngIf="form.get('Experience')?.errors?.['min']">
+                    Experience cannot be negative.
+                </ng-container>
+                <ng-container *ngIf="form.get('Experience')?.errors?.['max']">
+                    Experience cannot exceed 50 years.
+                </ng-container>
+            </small>
+        </div>
+        <div class="mb-4">
+  <label for="image" class="form-label">Upload Image</label>
+  <input type="file" class="form-control" accept="image/*" (change)="onFileChange($event)">
+  <small *ngIf="imageTouched && !imageFile" class="text-danger">
+    Image is required.
+  </small>
+</div>
+
+
+        <div *ngIf="imagePreview || imageurl" class="mt-3">
+        <h6>Current Image:</h6>
+        <img 
+            [src]="imagePreview || imageurl" 
+            alt="Profile Preview" 
+            class="img-thumbnail mt-2" 
+            style="max-width: 200px; max-height: 200px;"
+        >
+    </div>
+
+        <div class="text-end">
+            <button class="btn btn-primary save-btn">Save</button>
+        </div>
+    </form>
+</div>

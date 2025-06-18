@@ -1,0 +1,102 @@
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-10 col-lg-8">
+            <div class="form-container">
+                <div class="form-header">
+                    <h2>Contact Information</h2>
+                    <p class="text-muted">Please fill in your details</p>
+                </div>
+
+                <form [formGroup]="contactForm" (ngSubmit)="savecontact()">
+                    <div class="row">
+                        <!-- Left Column -->
+                        <div class="col-md-6 form-column">
+                            <!-- Location Field -->
+                            <div class="mb-3">
+                                <label for="location" class="form-label">
+                                    <img src="https://cdn-icons-png.flaticon.com/512/2838/2838694.png"
+                                        class="social-icon" alt="Location">
+                                    Location
+                                </label>
+                                <input type="text" class="form-control" placeholder="Enter your location"
+                                    formControlName="location">
+                            </div>
+
+                            <!-- Email Field -->
+                            <div class="mb-3">
+                                <label for="email" class="form-label">
+                                    <img src="https://cdn-icons-png.flaticon.com/512/561/561127.png" class="social-icon"
+                                        alt="Email">
+                                    Email
+                                </label>
+                                <input type="email" class="form-control" placeholder="Enter your email"
+                                    formControlName="email">
+                            </div>
+
+                            <!-- Phone Field -->
+                            <div class="mb-3">
+                                <label for="phone" class="form-label">
+                                    <img src="https://cdn-icons-png.flaticon.com/512/126/126341.png" class="social-icon"
+                                        alt="Phone">
+                                    Phone
+                                </label>
+                                <input type="tel" class="form-control" placeholder="Enter your phone number"
+                                    formControlName="phone">
+                            </div>
+                        </div>
+
+                        <!-- Right Column -->
+                        <div class="col-md-6 form-column">
+                            <!-- GitHub Profile Field -->
+                            <div class="mb-3">
+                                <label for="github" class="form-label">
+                                    <img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" class="social-icon"
+                                        alt="GitHub">
+                                    GitHub Profile URL
+                                </label>
+                                <input type="url" class="form-control" placeholder="https://github.com/username"
+                                    formControlName="githubUrl">
+                            </div>
+
+                            <!-- Instagram Profile Field -->
+                            <div class="mb-3">
+                                <label for="instagram" class="form-label">
+                                    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png"
+                                        class="social-icon" alt="Instagram">
+                                    Instagram Profile URL
+                                </label>
+                                <input type="url" class="form-control" placeholder="https://instagram.com/username"
+                                    formControlName="intsaUrl">
+                            </div>
+
+                            <!-- LinkedIn Profile Field -->
+                            <div class="mb-3">
+                                <label for="linkedin" class="form-label">
+                                    <img src="https://cdn-icons-png.flaticon.com/512/3536/3536505.png"
+                                        class="social-icon" alt="LinkedIn">
+                                    LinkedIn Profile URL
+                                </label>
+                                <input type="url" class="form-control" placeholder="https://linkedin.com/in/username"
+                                    formControlName="linkedInUrl">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Full width submit button -->
+                    <div class="row mt-3">
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-primary btn-submit" [disabled]="isSubmitting">
+                                <span *ngIf="!isSubmitting">Submit</span>
+                                <span *ngIf="isSubmitting">
+                                    <span class="spinner-border spinner-border-sm" role="status"
+                                        aria-hidden="true"></span>
+                                    Saving...
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

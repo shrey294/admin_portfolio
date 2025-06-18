@@ -1,0 +1,150 @@
+<!-- <div class="conatiner mt-4">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+            <label for="initials" class="form-label">Initials</label>
+            <input type="text" id="initials" class="form-control" formControlName="initials" />
+            <div *ngIf="form.get('initials')?.touched && form.get('initials')?.invalid" class="text-danger">
+                Initials are required.
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" id="name" class="form-control" formControlName="name" />
+            <div *ngIf="form.get('name')?.touched && form.get('name')?.invalid" class="text-danger">
+                Name is required.
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="designation" class="form-label">designation</label>
+            <input type="text" id="designation" class="form-control" formControlName="designation">
+            <div *ngIf="form.get('designation')?.touched && form.get('designation')?.invalid" class="text-danger">
+                Designation is required.
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="short_description" class="form-label">short_description</label>
+            <editor 
+            apiKey="186i2ct6k1sq7dv2bblje805ehqmqldfxnfztmd3c71gaowo"
+            id="short_description" formControlName="short_description" [init]="{
+          height: 300,
+          menubar: false,
+          plugins: 'link lists code',
+          toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | bullist numlist | link code',
+          branding: false
+        }"></editor>
+            <div *ngIf="form.get('short_description')?.touched && form.get('short_description')?.invalid"
+                class="text-danger">
+                Short description is required.
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="icons" class="form-label">icons</label>
+            <input type="text" id="icons" class="form-control" formControlName="icons">
+            <div *ngIf="form.get('icons')?.touched && form.get('icons')?.invalid" class="text-danger">
+                Icons are required.
+            </div>
+        </div>
+         <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+</div> -->
+
+<div class="container mt-5">
+    <div class="card shadow-lg">
+        <!-- <div class="card-header bg-primary text-white">
+            <h3 class="mb-0">Profile Information</h3>
+            <p class="mb-0">Please fill in your details</p>
+        </div> -->
+        <div class="card-body p-4">
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                <div class="row">
+                    <!-- Initials -->
+                    <div class="col-md-6 mb-4">
+                        <div class="form-floating">
+                            <input type="text" id="initials" class="form-control" formControlName="initials"
+                                placeholder="Initials"
+                                [ngClass]="{'is-invalid': form.get('initials')?.touched && form.get('initials')?.invalid}">
+                            <label for="initials" class="form-label">Initials</label>
+                            <div *ngIf="form.get('initials')?.touched && form.get('initials')?.invalid"
+                                class="invalid-feedback">
+                                Initials are required.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Name -->
+                    <div class="col-md-6 mb-4">
+                        <div class="form-floating">
+                            <input type="text" id="name" class="form-control" formControlName="name"
+                                placeholder="Full Name"
+                                [ngClass]="{'is-invalid': form.get('name')?.touched && form.get('name')?.invalid}">
+                            <label for="name" class="form-label">Full Name</label>
+                            <div *ngIf="form.get('name')?.touched && form.get('name')?.invalid"
+                                class="invalid-feedback">
+                                Name is required.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Designation -->
+                <div class="mb-4">
+                    <div class="form-floating">
+                        <input type="text" id="designation" class="form-control" formControlName="designation"
+                            placeholder="Designation"
+                            [ngClass]="{'is-invalid': form.get('designation')?.touched && form.get('designation')?.invalid}">
+                        <label for="designation" class="form-label">Designation</label>
+                        <div *ngIf="form.get('designation')?.touched && form.get('designation')?.invalid"
+                            class="invalid-feedback">
+                            Designation is required.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Short Description -->
+                <div class="mb-4">
+                    <label for="ShortDescription" class="form-label fw-bold mb-2">Short Description</label>
+                    <editor apiKey="186i2ct6k1sq7dv2bblje805ehqmqldfxnfztmd3c71gaowo" id="ShortDescription"
+                        formControlName="ShortDescription" [init]="{
+                            height: 300,
+                            menubar: false,
+                            plugins: 'link lists code',
+                            toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | bullist numlist | link code',
+                            branding: false,
+                            content_style: 'body { font-family: Arial, sans-serif; font-size: 14px; }'
+                        }"
+                        [ngClass]="{'is-invalid': form.get('short_description')?.touched && form.get('short_description')?.invalid}">
+                    </editor>
+                    <div *ngIf="form.get('short_description')?.touched && form.get('short_description')?.invalid"
+                        class="invalid-feedback mt-2">
+                        Short description is required.
+                    </div>
+                </div>
+
+                <!-- Icons -->
+                <div class="mb-4">
+                    <div class="form-floating">
+                        <input type="text" id="icons" class="form-control" formControlName="icons"
+                            placeholder="Icons (comma separated)"
+                            [ngClass]="{'is-invalid': form.get('icons')?.touched && form.get('icons')?.invalid}">
+                        <label for="icons" class="form-label">Icons (comma separated)</label>
+                        <div *ngIf="form.get('icons')?.touched && form.get('icons')?.invalid" class="invalid-feedback">
+                            Icons are required.
+                        </div>
+                        <small class="text-muted">Example: fa-user, fa-envelope, fa-phone</small>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="d-flex justify-content-end mt-4">
+                    <button type="submit" class="btn btn-primary px-4 py-2" [disabled]="loading">
+                        <span *ngIf="loading" class="spinner-border spinner-border-sm me-2" role="status"
+                            aria-hidden="true"></span>
+                        <span *ngIf="!loading"><i class="fas fa-save me-2"></i></span>
+                        {{ loading ? 'Saving...' : 'Save Profile' }}
+                    </button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,39 @@
+.table-responsive {
+    overflow-x: auto;
+}
+
+.table {
+    font-size: 0.85rem;
+    margin-bottom: 0;
+}
+
+.table th {
+    border-top: none;
+    font-weight: 700;
+    color: #4e73df;
+    white-space: nowrap;
+}
+
+.table td {
+    vertical-align: middle;
+}
+
+.badge {
+    font-weight: 500;
+    padding: 0.35em 0.65em;
+    font-size: 0.75em;
+}
+
+/* Message cell styling */
+.message-cell {
+    max-width: 300px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.message-cell:hover {
+    white-space: normal;
+    overflow: visible;
+    text-overflow: unset;
+}
