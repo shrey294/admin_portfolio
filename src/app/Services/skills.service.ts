@@ -9,7 +9,7 @@ export class SkillsService {
 
   constructor(private http: HttpClient) { }
 
-  private readonly apiurl = 'https://localhost:7071/api/Skills';
+  private readonly apiurl = 'https://shreygandhi.bsite.net/api/Skills';
 
   getskills() {
     return this.http.get(`${this.apiurl}/GetSkills`);

@@ -8,7 +8,7 @@ export class ProjectsService {
 
   constructor(private http:HttpClient) { }
 
-  private readonly apiurl = 'https://localhost:7071/api/Projects';
+  private readonly apiurl = 'https://shreygandhi.bsite.net/api/Projects';
 
   getproject(){
     return this.http.get(`${this.apiurl}/GetProjectList`);

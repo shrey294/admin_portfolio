@@ -9,9 +9,9 @@ export class ContactService {
 
   constructor(private http: HttpClient) { }
 
-  private readonly apiurl = 'https://localhost:7071/api/Contact_Deatils';
+  private readonly apiurl = 'https://shreygandhi.bsite.net/api/Contact_Deatils';
 
-  private readonly apiurlenquiry = 'https://localhost:7071/api/enquiry';
+  private readonly apiurlenquiry = 'https://shreygandhi.bsite.net/api/enquiry';
 
   getcontactdetails() {
     return this.http.get(`${this.apiurl}/GetContactDetails`);

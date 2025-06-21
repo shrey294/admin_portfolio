@@ -12,7 +12,7 @@ export class ApiaboutmeService {
 
   constructor(private http:HttpClient) { }
 
-  private readonly apiurl = 'https://localhost:7071/api/About_me';
+  private readonly apiurl = 'https://shreygandhi.bsite.net/api/About_me';
 
   insertintro(formData:FormData){
     return this.http.post(`${this.apiurl}/Addintro`,formData);

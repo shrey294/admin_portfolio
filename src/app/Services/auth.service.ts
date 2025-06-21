@@ -7,7 +7,7 @@ import { TokenApi } from '../Models/token-api.model';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl='https://localhost:7071/api/User';
+  private apiUrl='https://shreygandhi.bsite.net/api/User';
   constructor(private http:HttpClient) { }
 
   login(credentials:{userName:string; password:string}): Observable<TokenApi>{

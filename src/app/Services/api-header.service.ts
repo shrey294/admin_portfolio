@@ -10,7 +10,7 @@ export class ApiHeaderService {
 
   constructor(private http:HttpClient) { }
   
-  private readonly apiurl='https://localhost:7071/api/Admin_header_CRUD';
+  private readonly apiurl='https://shreygandhi.bsite.net/api/Admin_header_CRUD';
 
   insertHeader(data: header): Observable<any>{
     return this.http.post(`${this.apiurl}/Insert`,data);
